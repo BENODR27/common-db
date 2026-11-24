@@ -69,4 +69,3 @@ does not change a password already stored in a volume.
 Data survives normal restarts. Never use `down -v` or delete volumes to resolve
 configuration problems. This shared test server is not a shared multi-customer
 production database; each customer installation retains its own isolated data.
-# common-db
