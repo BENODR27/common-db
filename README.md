@@ -69,3 +69,13 @@ does not change a password already stored in a volume.
 Data survives normal restarts. Never use `down -v` or delete volumes to resolve
 configuration problems. This shared test server is not a shared multi-customer
 production database; each customer installation retains its own isolated data.
+
+Fresh app accounts are explicit API-owned seeds, not PostgreSQL init scripts.
+After migrations, configure each identity API's private `.env.seed` from
+`seed.env.example`, then run this command in IAM and Subscription API:
+
+```sh
+docker compose --env-file .env.deploy -f compose.independent.yaml --profile maintenance run --rm --build seed
+```
+
+Restored databases keep their existing users and must not be bootstrapped again.
